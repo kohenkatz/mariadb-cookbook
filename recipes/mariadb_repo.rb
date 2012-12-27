@@ -24,28 +24,12 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-case node['platform']
-when "ubuntu", "debian"
-  include_recipe "apt"
-  apt_repository "percona" do
-    uri "http://repo.percona.com/apt"
-    distribution node['lsb']['codename']
-    components ['main']
-    keyserver "keys.gnupg.net"
-    key "CD2EFD2A"
-    action :add
-  end
-when "centos", "rhel", "scientific"
-  include_recipe "yum"
-  yum_key "RPM-GPG-KEY-percona" do
-    url "http://www.percona.com/downloads/RPM-GPG-KEY-percona"
-    action :add
-  end
-
-  yum_repository "percona" do
-    name "CentOS #{node['lsb']['release']} - Percona"
-    url "http://repo.percona.com/centos/#{node['lsb']['release']}/os/#{node['kernel']['machine']}/"
-    key "RPM-GPG-KEY-percona"
-    action :add
-  end
+include_recipe "apt"
+apt_repository "mariadb" do
+  uri "http://mirrors.supportex.net/mariadb/repo/5.5/ubuntu"
+  distribution node['lsb']['codename']
+  components ['main']
+  keyserver "keys.gnupg.net"
+  key "CD2EFD2A"
+  action :add
 end

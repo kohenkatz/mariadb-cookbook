@@ -24,5 +24,5 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-include_recipe "percona::percona_repo"
+include_recipe "mariadb::mariadb_repo"
 include_recipe "mysql::server"

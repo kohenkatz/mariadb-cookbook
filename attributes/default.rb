@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: percona
+# Cookbook Name:: mariadb
 # Attribute:: default
 #
 # Copyright 2012, Myplanet Digital, Inc.
@@ -24,24 +24,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-# Options are: 5.0, 5.1, 5.5, latest
-default['percona']['version'] = "5.5"
-
 # Percona doesn't use upstart like vanilla MySQL does.
 normal['mysql']['use_upstart'] = false
 
-case node['platform']
-when "ubuntu", "debian"
-  case node['percona']['version']
-  when "5.0"
-    normal['mysql']['client']['packages'] = %w{percona-sql-client}
-    normal['mysql']['server']['packages'] = %w{percona-sql-server}
-  when "5.1", "5.5"
-    normal['mysql']['client']['packages'] = %W{percona-server-client-#{node['percona']['version']}}
-    normal['mysql']['server']['packages'] = %W{percona-server-server-#{node['percona']['version']}}
-  when "latest"
-    normal['mysql']['client']['packages'] = %w{percona-server-client}
-    normal['mysql']['server']['packages'] = %w{percona-server-server}
-  end
-end
-
+normal['mysql']['client']['packages'] = %W{mariadb-client}
+normal['mysql']['server']['packages'] = %W{mariadb-server}
