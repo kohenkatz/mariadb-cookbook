@@ -30,6 +30,6 @@ apt_repository "mariadb" do
   distribution node['lsb']['codename']
   components ['main']
   keyserver "keys.gnupg.net"
-  key "CD2EFD2A"
+  key "1BB943DB"
   action :add
 end
