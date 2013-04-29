@@ -7,4 +7,3 @@ version          "0.0.1"
 
 depends          "mysql", ">= 1.3.0"
 suggests         "apt"
-suggests         "yum"
