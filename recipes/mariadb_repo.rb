@@ -29,7 +29,7 @@ apt_repository "mariadb" do
   uri "http://mirrors.supportex.net/mariadb/repo/5.5/ubuntu"
   distribution node['lsb']['codename']
   components ['main']
-  keyserver "keys.gnupg.net"
-  key "1BB943DB"
+  keyserver "keyserver.ubuntu.com"
+  key "0xcbcb082a1bb943db"
   action :add
 end
