@@ -26,7 +26,7 @@
 
 include_recipe "apt"
 apt_repository "mariadb" do
-  uri "http://mirrors.supportex.net/mariadb/repo/5.5/ubuntu"
+  uri "http://mirrors.supportex.net/mariadb/repo/#{node[:mariadb][:version]}/ubuntu"
   distribution node['lsb']['codename']
   components ['main']
   keyserver "keyserver.ubuntu.com"
