@@ -1,5 +1,5 @@
-maintainer       "Myplanet Digital, Inc."
-maintainer_email "devops@myplanetdigital.com"
+maintainer       "Marcin Koziuk"
+maintainer_email "marcin.koziuk@gmail.com"
 license          "MIT"
 description      "Installs/Configures MariaDB"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
