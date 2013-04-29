@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: percona
+# Cookbook Name:: mariadb
 # Recipe:: default
 #
 # Copyright 2012, Myplanet Digital, Inc.

@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: percona
-# Recipe:: percona_repo
+# Cookbook Name:: mariadb
+# Recipe:: mariadb_repo
 #
 # Copyright 2012, Myplanet Digital, Inc.
 #

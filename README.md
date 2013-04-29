@@ -1,10 +1,12 @@
 Description
 ===========
 
-Install Percona server components, leveraging the Opscode MySQL cookbook
+Install MariaDB server components, leveraging the Opscode MySQL cookbook
 as much as possible.
 
-Tested only on Ubuntu 10.04. Not tested on enterprise linux distros.
+Based on the chef-percona cookbook: https://github.com/myplanetdigital/chef-percona
+
+Tested only on Ubuntu 12.04. Not tested on enterprise linux distros.
 
 Requirements
 ============
@@ -14,9 +16,8 @@ Requirements
 Attributes
 ==========
 
-`percona['version']`
-Which version of Percona to install. Options are `5.0`, `5.1`,
-`5.5`, or `latest`.
+`mariadb['version']`
+Which version of MariaDB to install. Allowed values are `5.5` and `10.0`.
 
 Other attributes necessarily override the default mysql attributes
 related to package names.
@@ -29,21 +30,21 @@ default
 
 Mirror of `client` recipe.
 
-percona_repo
+mariadb_repo
 ------------
 
-Installs Apt or Yum repos as required to download Percona packages.
+Installs the MariaDB APT repo for Ubuntu.
 
 client
 ------
 
-Includes `percona_repo` recipe and installs Percona client using
+Includes `mariadb_repo` recipe and installs MariaDB client using
 `mysql::client` recipe.
 
 server
 ------
 
-Includes `percona_repo` recipe and installs Percona server using
+Includes `mariadb_repo` recipe and installs MariaDB server using
 `mysql::server` recipe.
 
 Usage
@@ -52,4 +53,4 @@ Usage
 To Do
 =====
 
-  - Add recipes for additional Percona utilities.
+  - Add support for enterprise linux and FreeBSD
