@@ -26,5 +26,8 @@
 
 default['mariadb']['version'] = "5.5"
 
+# MariaDB doesn't use upstart like vanilla MySQL does.
+normal['mysql']['use_upstart'] = false
+
 normal['mysql']['client']['packages'] = %W{mariadb-client}
 normal['mysql']['server']['packages'] = %W{mariadb-server}
