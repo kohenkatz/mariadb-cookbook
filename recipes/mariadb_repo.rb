@@ -26,7 +26,12 @@
 
 include_recipe "apt"
 apt_repository "mariadb" do
-  uri "http://mirrors.supportex.net/mariadb/repo/#{node[:mariadb][:version]}/ubuntu"
+  platform = node['platform']
+  unless ['debian', 'ubuntu'].include?(platform)
+    raise "Unsupported platform: #{platform}"
+  end
+
+  uri "http://mirrors.supportex.net/mariadb/repo/#{node[:mariadb][:version]}/#{platform}"
   distribution node['lsb']['codename']
   components ['main']
   keyserver "keyserver.ubuntu.com"
