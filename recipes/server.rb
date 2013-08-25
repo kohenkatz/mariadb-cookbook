@@ -26,3 +26,9 @@
 
 include_recipe "mariadb::mariadb_repo"
 include_recipe "mysql::server"
+
+execute "mariadb-install-oqgraph" do
+   command "mysql -u #{node['mysql']['username']} -p#{node['mysql']['server_root_password']} < #{node['mariadb']['oqgraph']['install_file']}"
+   action :run
+   only_if { `/usr/bin/mysql -u #{node['mysql']['username']} -p#{node['mysql']['server_root_password']} -D mysql -r -B -N -e \"SELECT count(*) from information_schema.ENGINES e where e.ENGINE = 'OQGRAPH'"`.to_i == 0 }
+end
