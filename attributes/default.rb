@@ -31,3 +31,5 @@ normal['mysql']['use_upstart'] = false
 
 normal['mysql']['client']['packages'] = %W{mariadb-client libmariadbclient-dev}
 normal['mysql']['server']['packages'] = %W{mariadb-server}
+normal['mariadb']['oqgraph'] = false
+normal['mariadb']['oqgraph']['install_file'] = '/tmp/install_oqgraph.sql'
