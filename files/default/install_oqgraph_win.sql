@@ -1,0 +1,1 @@
+INSTALL PLUGIN oqgraph SONAME 'ha_oqgraph.dll';
