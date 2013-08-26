@@ -25,18 +25,13 @@
 #
 
 include_recipe "apt"
+
 apt_repository "mariadb" do
   platform = node['platform']
   unless ['debian', 'ubuntu'].include?(platform)
     raise "Unsupported platform: #{platform}"
   end
-
-  case node['platform_family']
-  when "ubuntu"
-  uri "http://mirrors.supportex.net/mariadb/repo/#{node[:mariadb][:version]}/#{platform}"
-  when "debian"
-  uri "http://mirrors.supportex.net/mariadb/repo/#{node[:mariadb][:version]}/#{platform} wheezy"
-end
+  uri "http://mirrors.supportex.net/mariadb/repo/#{node[:mariadb][:version]}/#{node[: platform_family]}"
   distribution node['lsb']['codename']
   components ['main']
   keyserver "keyserver.ubuntu.com"
