@@ -31,10 +31,16 @@ apt_repository "mariadb" do
     raise "Unsupported platform: #{platform}"
   end
 
+  case node['platform_family']
+  when "ubuntu"
   uri "http://mirrors.supportex.net/mariadb/repo/#{node[:mariadb][:version]}/#{platform}"
+  when "debian"
+  uri "http://mirrors.supportex.net/mariadb/repo/#{node[:mariadb][:version]}/#{platform} wheezy"
+end
   distribution node['lsb']['codename']
   components ['main']
   keyserver "keyserver.ubuntu.com"
   key "0xcbcb082a1bb943db"
   action :add
+  notifies :run, resources(:execute => "apt-get update"), :immediately
 end
