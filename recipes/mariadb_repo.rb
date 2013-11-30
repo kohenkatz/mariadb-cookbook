@@ -28,8 +28,6 @@ include_recipe "apt"
 
 apt_repository "mariadb" do
   uri "http://ftp.osuosl.org/pub/mariadb/repo/#{node[:mariadb][:version]}/ubuntu/"
-  distribution node['lsb']['codename']
-  components ['main']
   keyserver "keyserver.ubuntu.com"
   key "0xcbcb082a1bb943db"
   action :add
