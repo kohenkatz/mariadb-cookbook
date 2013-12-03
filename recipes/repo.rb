@@ -24,6 +24,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+include_recipe "apt"
+
 apt_repository "mariadb" do
     uri "http://ftp.osuosl.org/pub/mariadb/repo/#{node[:mariadb][:version]}/ubuntu/"
     distribution node['lsb']['codename']
