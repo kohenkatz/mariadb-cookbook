@@ -24,5 +24,5 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-include_recipe "mariadb::mariadb_repo"
+include_recipe "mariadb::repo"
 include_recipe "mysql::client"
