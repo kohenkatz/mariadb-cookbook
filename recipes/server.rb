@@ -25,27 +25,34 @@
 #
 
 include_recipe "mariadb::repo"
-include_recipe "mysql::server"
+
+node.normal[:mysql][:server][:packages] = %w{mariadb-server-5.5 apparmor-utils}
+
+# MariaDB doesn't use upstart like vanilla MySQL does.
+node.normal[:mysql][:use_upstart] = false
+
+include_recipe 'mysql::server'
 
 if node['mariadb']['oqgraph']
 
 cookbook_file node['mariadb']['oqgraph_install_file'] do
-   case node["platform_family"]
-when "debian"
-source "install_oqgraph.sql"
-when "windows"
-source "install_oqgraph_win.sql"
-end
-  owner "root"
-  group "root"
-  mode "0600"
-end
+	case node["platform_family"]
+		when "debian"
+			source "install_oqgraph.sql"
+		when "windows"
+			source "install_oqgraph_win.sql"
+		end
 
-execute "mariadb-install-oqgraph" do
-   
-   command "mysql -u root -p#{node['mysql']['server_root_password']} < #{node['mariadb']['oqgraph_install_file']}"
-   action :run
-   only_if { `/usr/bin/mysql -u root -p#{node['mysql']['server_root_password']} -D mysql -r -B -N -e \"SELECT count(*) from information_schema.ENGINES e where e.ENGINE = 'OQGRAPH'"`.to_i == 0 }
-end
+		owner "root"
+		group "root"
+		mode "0600"
+	end
+
+	execute "mariadb-install-oqgraph" do
+
+	   command "mysql -u root -p#{node['mysql']['server_root_password']} < #{node['mariadb']['oqgraph_install_file']}"
+	   action :run
+	   only_if { `/usr/bin/mysql -u root -p#{node['mysql']['server_root_password']} -D mysql -r -B -N -e \"SELECT count(*) from information_schema.ENGINES e where e.ENGINE = 'OQGRAPH'"`.to_i == 0 }
+	end
 
 end
