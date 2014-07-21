@@ -26,7 +26,7 @@
 
 include_recipe "mariadb::repo"
 
-node.normal[:mysql][:server][:packages] = %w{mariadb-server-5.5 apparmor-utils}
+node.normal[:mysql][:server][:packages] = %w{mariadb-server-10.0 apparmor-utils}
 
 # MariaDB doesn't use upstart like vanilla MySQL does.
 node.normal[:mysql][:use_upstart] = false
