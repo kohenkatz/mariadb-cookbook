@@ -24,7 +24,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-node.normal[:mysql][:client][:packages] = %w{mysql-common mariadb-common libmariadbclient18 mariadb-client libmariadbclient-dev libmariadbd-dev}
+node.normal[:mysql][:client][:packages] = %w{mariadb-common mariadb-common libmariadbclient18 mariadb-client libmariadbclient-dev libmariadbd-dev}
 
 include_recipe 'mariadb::repo'
 include_recipe 'mysql::client'
