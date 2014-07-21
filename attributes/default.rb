@@ -24,6 +24,6 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-default[:mariadb][:version] = "5.5"
+default[:mariadb][:version] = "10"
 default[:mariadb][:oqgraph] = false
 default[:mariadb][:oqgraph_install_file]= "/tmp/install_oqgraph.sql"
